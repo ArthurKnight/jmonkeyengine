@@ -42,7 +42,7 @@ import java.util.Map;
  */
 public abstract class CompactArray<T> {
 
-    private Map<T, Integer> indexPool = new HashMap<T, Integer>();
+    protected Map<T, Integer> indexPool = new HashMap<T, Integer>();
     protected int[] index;
     protected float[] array;
     private boolean invalid;
@@ -109,6 +109,10 @@ public abstract class CompactArray<T> {
     public void freeze() {
         serialize();
         indexPool.clear();
+    }
+
+    protected void setInvalid(boolean invalid) {
+        this.invalid = invalid;
     }
 
     /**
